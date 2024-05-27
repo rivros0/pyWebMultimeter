@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Multimeter</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; text-align: center; }
+        img { max-width: 100%; height: auto; }
+    </style>
+    <script>
+        function fetchData() {
+            fetch('/update')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    setTimeout(fetchData, 10000);
+                });
+        }
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Multimeter</h1>
+        <img src="data:image/png;base64,{{ image_base64 }}" alt="Graph">
+    </div>
+</body>
+</html>
